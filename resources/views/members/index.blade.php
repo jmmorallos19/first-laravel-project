@@ -4,6 +4,12 @@
  <p>Hello User!</p>
      @endif --}}
 
+    @if(session('message'))
+        <div class="w-dvw py-3 flex justify-center">
+            <p class="text-green-500 m-0 font-bold text-2xl">{{ session('message') }}</p>
+        </div>
+    @endif
+
     <h1>Members List</h1>
     
     <ul>

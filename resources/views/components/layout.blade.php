@@ -35,9 +35,24 @@
         <nav>
             <h1>Jmark.</h1>
 
+            @guest
+                <a href="{{ route('show.login') }}" class="btn mt-2 inline-block">Login</a>
+                <a href="{{ route('show.register') }}" class="btn mt-2 inline-block">Register</a>
+            @endguest
+ 
+            @auth
+            <span>
+                Hi there, {{ Auth::user()->name }}
+            </span>
             <a href="{{ route('members.index') }}">All Members</a>
-            <a href="{{ route('members.create') }}">Create New Member</a>
-            
+            <a href="{{ route('members.create') }}">Create Member</a>
+            <form action="{{ route('logout') }}" class="flex items-end p-0" method="POST">
+                @csrf
+
+                <button class="btn" type="submit">Logout</button>
+            </form>
+            @endauth
+
         </nav>
     </header>
 

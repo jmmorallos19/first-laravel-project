@@ -2,10 +2,26 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MembersController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// To show login page
+Route::get('/login', [AuthController::class, 'showLogin'])->name('show.login');
+
+// To show Resgistration page
+Route::get('/register', [AuthController::class, 'showRegister'])->name('show.register');
+
+// For login requests
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+// For Registration requests
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+// For Log out
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // To show all data
 Route::get('/members', [MembersController::class, 'index'])->name('members.index');
